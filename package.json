@@ -1,0 +1,61 @@
+{
+  "name": "procomsmartdevices",
+  "homepage": "https://test.mrmprocom.com/",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.3",
+    "@mui/material": "^5.15.3",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.4.0",
+    "chart.js": "^4.3.0",
+    "chartjs-adapter-moment": "^1.0.1",
+    "chartjs-plugin-annotation": "^3.0.1",
+    "chartjs-plugin-zoom": "^2.0.1",
+    "decimal.js": "^10.4.3",
+    "mdb-react-ui-kit": "^7.1.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.44",
+    "numeral": "^2.0.6",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
+    "react-loading": "^2.0.3",
+    "react-parallax-tilt": "^1.7.151",
+    "react-router-dom": "^6.13.0",
+    "react-scripts": "^5.0.1",
+    "react-toastify": "^10.0.4",
+    "styled-components": "^5.3.10",
+    "universal-cookie": "^4.0.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

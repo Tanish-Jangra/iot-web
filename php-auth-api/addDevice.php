@@ -1,0 +1,81 @@
+<?php
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Origin: https://iot.mrmprocom.com");
+header("Access-Control-Allow-Headers: access");
+header("Access-Control-Allow-Methods: POST");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+require __DIR__ . '/classes/Database.php';
+$db_connection = new Database();
+$conn = $db_connection->dbConnection();
+
+function msg($success, $status, $message, $extra = [])
+{
+    return array_merge([
+        'success' => $success,
+        'status' => $status,
+        'message' => $message
+    ], $extra);
+}
+
+// DATA FORM REQUEST
+$data = json_decode(file_get_contents("php://input"));
+$returnData = [];
+
+if ($_SERVER["REQUEST_METHOD"] != "POST"):
+
+    $returnData = msg(0, 404, 'Page Not Found!');
+
+elseif (
+    !isset($data->device)
+    || !isset($data->email)
+    || empty(trim($data->device))
+    || empty(trim($data->email))
+):
+
+    $fields = ['fields' => ['device', 'email']];
+    $returnData = msg(0, 422, 'Please Fill in all Required Fields!', $fields);
+
+    // IF THERE ARE NO EMPTY FIELDS THEN-
+else:
+
+    $device = trim($data->device);
+    $email = trim($data->email);
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)):
+        $returnData = msg(0, 422, 'Invalid Email Address!');
+
+    else:
+        try {
+            $check_email = "SELECT `email` FROM `userdevices` WHERE `email`=:email AND `device`=:device";
+            $check_email_stmt = $conn->prepare($check_email);
+            $check_email_stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $check_email_stmt->bindValue(':device', $device, PDO::PARAM_STR);
+            $check_email_stmt->execute();
+
+
+            if ($check_email_stmt->rowCount()):
+                $returnData = msg(0, 422, 'Already stored !');
+
+            else:
+                $insert_query = "INSERT INTO `userdevices`(`device`,`email`) VALUES(:device,:email)";
+
+                $insert_stmt = $conn->prepare($insert_query);
+
+                // DATA BINDING
+                $insert_stmt->bindValue(':device', $device, PDO::PARAM_STR);
+                $insert_stmt->bindValue(':email', $email, PDO::PARAM_STR);
+
+                $insert_stmt->execute();
+
+                $returnData = msg(1, 201, 'Device successfully stored !');
+            endif;
+
+        } catch (PDOException $e) {
+            $returnData = msg(0, 500, $e->getMessage());
+        }
+    endif;
+endif;
+
+echo json_encode($returnData);

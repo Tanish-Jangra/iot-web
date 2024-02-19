@@ -1,0 +1,28 @@
+.graphs{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, auto));
+    grid-gap: 30px;
+    margin: 30px auto;
+    max-width: 1240px;
+    padding: 10px;
+ }
+ .graph{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 5px rgba(75, 75, 75, 0.07);
+    z-index: 1;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  
+  @media screen and (max-width: 900px){
+   .graphs{
+     
+      grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+     
+   } 
+  }

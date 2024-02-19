@@ -1,0 +1,72 @@
+.settings{
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 2%;
+    min-height: 100vh;
+    gap: 0.5%;
+}
+
+.item{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5%;
+    /* flex-wrap: wrap; */
+    box-shadow: 0px 5px 20px 0px #1c3269;
+    transition: transform 0.2s ease-in-out;
+    border: 1px solid #284897;
+    border-radius: 10px;
+    width: 30%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.item:hover{
+    transform: scale(1.04);
+}
+
+.item:active{
+    transform: scale(1);
+}
+
+.settingTitle{
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #284897;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.settingValue{
+    width: 50%;
+    border-radius: 10px;
+    color: #284897;
+    font-weight: 300;
+    border: 1px solid #284897;
+    padding: 2px;
+}
+
+@media screen and (max-width: 1080px){
+    .settings{
+        justify-content: center;
+        gap: 10%;
+    }
+    .item{
+        width: 40%;
+    }
+    .settingTitle{
+        text-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 780px){
+    .item{
+        width: 70%;
+    }
+}

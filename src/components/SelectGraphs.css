@@ -1,0 +1,58 @@
+.selectGraphs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  grid-gap: 10px;
+  margin: 0px auto;
+  padding: 10px;
+  background-color: white;
+  /* border-top: 2px solid black; */
+  /* border-bottom: 2px solid black; */
+}
+
+.selectGraph {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: #fff;
+  padding: 6px;
+  color: #284897;
+  position: relative;
+  box-shadow: 0px 10px 20px 0px #284897;
+  z-index: 1;
+  cursor: pointer;
+  border: 1px solid #284897;
+  border-radius: 15px;
+  transition: transform 0.2s ease-in;
+}
+
+.selectGraph:hover{
+  transform: scale(1.1);
+}
+
+.selectGraph:active{
+  transform: scale(1);
+}
+
+.generateGraphsButton{
+    display: block;
+    padding:24px;
+    margin-left: auto;
+    cursor: pointer;
+    margin-right: auto;
+    background-color: #284897;
+    color: white;
+    border:1px solid #284897;
+    border-radius: 8px;
+    box-shadow: 0px 10px 20px 0px #284897;
+    transition: transform 0.2s ease-in;
+}
+
+.generateGraphsButton:hover{
+  transform: scale(1.1);
+}
+
+.generateGraphsButton:active{
+  transform: scale(1);
+  background-color: #284897;
+}
+
